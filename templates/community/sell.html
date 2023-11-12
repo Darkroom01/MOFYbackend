@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>중고 거래 게시판</title>
+</head>
+<body>
+<form>
+    {% csrf_token %}
+    <div>
+        <a type="button" href="/main"> 메인 </a>
+    </div>
+    <div>
+        <a href="{% url 'sellForm' %}">작성하기</a>
+    </div>
+    <p>중고 거래 게시글 리스트</p>
+    <br>
+    <div>
+        {% for list in productList %}
+            <div>
+                <a href="post/{{ list.boardID }}">{{ list.title }} 입니다.</a>
+            </div>
+        {% endfor %}
+    </div>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>피드 게시판</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        제목 : <input type="text" name="title"/>
+        <br>
+        본문 : <input type="text" name="content"/>
+        <br>
+        피드사진 : <input type="text" name="image"/>
+        <br>
+        <input type="submit" class="btn btn-primary">
+    </form>
+
+</body>
+</html>

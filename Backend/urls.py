@@ -16,7 +16,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from community import views
+from community.views import CommunityForm, Community, CommunityDetail, Main, Fashion, Sell, FashionForm, SellForm, \
+    FashionDetail, SellDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('main/', Main.as_view(), name='main'),
+    path('community/', Community.as_view(), name='community'),
+    path('fashion/', Fashion.as_view(), name='fashion'),
+    path('sell/', Sell.as_view(), name='sell'),
+    path('communityForm/', CommunityForm.as_view(), name='communityForm'),
+    path('fashionForm/', FashionForm.as_view(), name='fashionForm'),
+    path('sellForm/', SellForm.as_view(), name='sellForm'),
+    path('community/post/<int:boardID>/', CommunityDetail.as_view(), name='detail'),
+    path('fashion/post/<int:boardID>/', FashionDetail.as_view(), name='detail'),
+    path('sell/post/<int:boardID>/', SellDetail.as_view(), name='detail'),
+    path('community/post/<int:boardID>/update', views.community_update, name='update'),
+    path('fashion/post/<int:boardID>/update', views.community_update, name='update'),
+    path('sell/post/<int:boardID>/update', views.community_update, name='update'),
+    path('community/post/<int:boardID>/delete', views.delete, name='delete'),
+    path('sell/post/<int:boardID>/delete', views.delete, name='delete'),
+    path('fashion/post/<int:boardID>/delete', views.delete, name='delete')
 ]
